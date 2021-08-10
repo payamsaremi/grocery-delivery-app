@@ -76,8 +76,9 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-tint: #f5f6f9;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: none) {
   /*
+  Change None to dark to enable again
    * Dark Colors
    * -------------------------------------------
    */
@@ -189,7 +190,7 @@ http://ionicframework.com/docs/theming/ */
     --ion-toolbar-background: var(--ion-color-step-150);
     --ion-toolbar-border-color: var(--ion-color-step-250);
   }
-
+  
 
   /*
    * Material Design Dark Theme

@@ -1,50 +1,66 @@
 <template>
   <ion-page>
-    <ion-header>
+    <ion-header >
       <ion-toolbar>
-        <ion-title>Tab 1</ion-title>
+        <ion-title size="small" slot="end">Mr.Krabs | مستر کربز</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
       <ion-header collapse="condense">
         <ion-toolbar>
-          <ion-title size="large">Tab 1</ion-title>
+          <ion-title size="medium">Mr.Krabs | مستر کربز</ion-title>
         </ion-toolbar>
       </ion-header>
-
-        <ion-button routerLink="/tabs/tab1/tab2">Go to tab 2</ion-button>
-
-        <ion-card>
-          <ion-card-header>
-            <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-            <ion-card-title>Card Title</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            Keep close to Nature's heart... and break clear away, once in awhile,
-            and climb a mountain or spend a week in the woods. Wash your spirit clean.
-          </ion-card-content>
-        </ion-card>
-        
-      <ExploreContainer name="Tab 1 page" />
-  
+      <div v-for="product in products" :key="product.id">
+        <CardProduct 
+        :image="product.image" 
+        :title="product.title" 
+        :subtitle="product.subtitle"
+        :category="product.category"
+        />
+      </div>
     </ion-content>
   </ion-page>
 </template>
 
-<script lang="ts">
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle  } from '@ionic/vue';
-import ExploreContainer from '@/components/ExploreContainer.vue';
+<script>
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
+import CardProduct from '@/components/CardProduct.vue';
 
 export default  {
   name: 'Tab1',
-  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle  }
+  components: {IonHeader, IonToolbar, IonTitle, IonContent, CardProduct, IonPage },
+
+  data(){
+    return {
+      products: [
+        {
+        id:0,
+        category:'پیتزا',
+        title:'Detroit style pizza with turkey breast', 
+        subtitle:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est, earum.', 
+        image:'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2020/04/03/DV3111_detroit-pizza_s4x3.jpg.rend.hgtvcom.616.462.suffix/1585945683220.jpeg'
+        },
+        {
+        d:1, 
+        category:'پیتزا',
+        title:'Detroit style pizza with turkey breast', 
+        subtitle:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est, earum.', 
+        image:'https://foxeslovelemons.com/wp-content/uploads/2020/10/Detroit-Style-Pizza-Recipe-5-720x720.jpg'
+        },
+        {
+        id:2, 
+        category:'پیتزا',
+        title:'Detroit style pizza with turkey breast', 
+        subtitle:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est, earum.', 
+        image:'https://mybizzykitchen.com/wp-content/uploads/2021/03/themoneyshott.jpeg'
+        },
+      ]
+    }
+  }
 }
 </script>
 
-<style scoped>
-.card {
-  background: rgb(63, 63, 63);
-  padding: 1rem;
-  margin: 1rem;
-}
+<style>
+
 </style>
