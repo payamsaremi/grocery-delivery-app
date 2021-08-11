@@ -1,11 +1,12 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router';
+import store from './store';
 import './index.css'
 import './main.css'
 
 import { IonicVue } from '@ionic/vue';
-
+import BaseLayout from './components/base/BaseLayout.vue';
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css';
 
@@ -27,8 +28,11 @@ import './theme/variables.css';
 
 const app = createApp(App)
   .use(IonicVue)
-  .use(router);
+  .use(router)
+  .use(store);
   
+app.component('base-layout', BaseLayout)
+
 router.isReady().then(() => {
   app.mount('#app');
 });

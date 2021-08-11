@@ -20,7 +20,7 @@ const routes = [
         component: () => import('@/views/Tab1.vue'),
       },
       {
-        path: 'tab1/detail/',
+        path: 'tab1/:id',
         name: 'detail',
         component: () => import('@/views/product/Detail.vue'),
       },
@@ -31,10 +31,6 @@ const routes = [
       {
         path: 'tab3',
         component: () => import('@/views/Tab3.vue'),
-      },
-      {
-        path: 'tab3/settings',
-        component: () => import('@/views/account/Settings.vue') 
       },
     ]
   }
