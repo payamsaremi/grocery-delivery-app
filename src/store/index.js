@@ -6,7 +6,7 @@ const store = createStore({
         products: [
             {
             id:0,
-            category:'پیتزا',
+            category:'pizza',
             title:'Detroit style pizza with turkey breast', 
             subtitle:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est, earum.', 
             image:'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2020/04/03/DV3111_detroit-pizza_s4x3.jpg.rend.hgtvcom.616.462.suffix/1585945683220.jpeg',
@@ -18,7 +18,7 @@ const store = createStore({
             },
             {
             id:1, 
-            category:'پیتزا',
+            category:'pizza',
             title:'Detroit style pizza with turkey breast', 
             subtitle:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est, earum.', 
             image:'https://foxeslovelemons.com/wp-content/uploads/2020/10/Detroit-Style-Pizza-Recipe-5-720x720.jpg',
@@ -30,7 +30,7 @@ const store = createStore({
             },
             {
             id:2, 
-            category:'پیتزا',
+            category:'salad',
             title:'Detroit style pizza with turkey breast', 
             subtitle:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est, earum.', 
             image:'https://mybizzykitchen.com/wp-content/uploads/2021/03/themoneyshott.jpeg',
@@ -54,6 +54,8 @@ const store = createStore({
         }
     }
 });
+
+
 
 export default store;
 

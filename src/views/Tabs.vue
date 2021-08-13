@@ -17,6 +17,12 @@
           <ion-icon :icon="call" />
           <ion-label>تماس</ion-label>
         </ion-tab-button>
+
+        <ion-tab-button tab="profile" href="/tabs/profile">
+          <ion-icon :icon="person" />
+          <ion-label>حساب من</ion-label>
+        </ion-tab-button>
+        
       </ion-tab-bar>
     </ion-tabs>
   </ion-page>
@@ -24,7 +30,7 @@
 
 <script>
 import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage, IonRouterOutlet } from '@ionic/vue';
-import { call, storefront, fastFood } from 'ionicons/icons';
+import { call, storefront, fastFood, person } from 'ionicons/icons';
 
 export default {
   name: 'Tabs',
@@ -34,6 +40,7 @@ export default {
       call, 
       storefront, 
       fastFood,
+      person,
     }
   }
 }

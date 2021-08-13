@@ -24,7 +24,8 @@ export default {
     name: 'CardProduct',
     components: {
       IonImg
-    }
+    },
+    
 
 }
 </script>
