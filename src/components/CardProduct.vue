@@ -8,7 +8,7 @@
             </div>
             <div class="p-8">
             <div class="uppercase tracking-wide text-sm text-red-500 font-semibold">{{category}}</div>
-            <p class="title block mt-1 leading-tight font-bold text-2xl text-black hover:underline">{{title}}</p>
+            <p class="title block mt-1 leading-tight font-bold text-2xl text-black ">{{title}}</p>
             <p class="mt-2 text-gray-500">{{ subtitle }}</p>
             </div>
         </div>

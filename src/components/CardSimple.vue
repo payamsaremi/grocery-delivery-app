@@ -1,10 +1,10 @@
 <template>
-   <div class="m-2">
-        <div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
+   <div class="mx-1">
+        <div class="w-full px-2 bg-gray-100 rounded-xl p-8">
             <div class="flex-shrink-0">
-              <img class="h-16 w-16" :src="image" alt="image">
+              <img class="w-16 h-16 mx-auto" :src="image" alt="image">
             </div>
-            <div>
+            <div class="pt-6 text-center space-y-4">
               <div class="text-xl font-medium text-black">{{ title }}</div>
               <p class="text-gray-500">{{ subtitle }}</p>
             </div>

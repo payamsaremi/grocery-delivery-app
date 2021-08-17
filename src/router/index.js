@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory} from '@ionic/vue-router';
 import Tabs from '../views/Tabs.vue'
-import { auth } from '../main'
+import { auth } from '../firestore'
 import { alertController } from '@ionic/vue';
 
 
@@ -30,8 +30,8 @@ const guard = (to, from, next) => {
       cssClass: 'my-custom-class',
       header: 'Access Denied',
       subHeader: 'Please Login',
-      message: 'برای بازدید از این صفحه نیاز به ورود به حساب خود دارید',
-      buttons: ['باشه'],
+      message: 'Please Login.',
+      buttons: ['OK'],
     });
   await alert.present();
 }
@@ -50,6 +50,11 @@ const routes = [
         redirect: '/tabs/tab1'
       },
       {
+        path: 'basket',
+        name: 'basket',
+        component: () => import('@/views/shopping/Basket.vue'),
+      },
+      {
         path: 'tab1',
         component: () => import('@/views/Tab1.vue'),
       },
@@ -60,6 +65,7 @@ const routes = [
       },
       {
         path: 'tab2',
+        name: 'meals',
         component: () => import('@/views/Tab2.vue'),
         beforeEnter: guard
       },

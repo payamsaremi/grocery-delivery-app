@@ -13,6 +13,9 @@ export default defineComponent({
   components: {
     IonApp,
     IonRouterOutlet
+  },
+  beforeCreate(){
+    this.$store.commit('initialiseStore');
   }
 });
 </script>

@@ -7,9 +7,9 @@
           </ion-buttons>
 
           <ion-buttons slot="end">
-           <ion-button>
+           <ion-button :router-link="{ name: 'basket'}">
               <ion-icon slot="icon-only" color="dark" :icon="bag"></ion-icon>
-              <ion-badge color="primary" class="badge">2</ion-badge>
+              <ion-badge color="primary" class="badge">{{basketItemsCount}}</ion-badge>
             </ion-button>
           </ion-buttons>
         <ion-title size="small" slot="end">{{ pageTitle }}</ion-title>
@@ -60,6 +60,11 @@ export default  {
   setup() {
     return {
       bag, 
+    }
+  },
+  computed: {
+    basketItemsCount(){
+      return this.$store.getters.basketItemsCount
     }
   }
 }

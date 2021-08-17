@@ -15,13 +15,23 @@ ion-button {
 
 ion-title {
   position: absolute;
-  font-weight: 600;
+  font-weight: 400;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   text-align: center;
   color: var(--ion-color-dark)
+}
+
+.center-of-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: aqua;
 }
 
 

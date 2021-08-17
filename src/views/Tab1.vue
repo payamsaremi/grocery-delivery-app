@@ -1,37 +1,21 @@
 <template>
-    <base-layout :backButton="true" pageTitle="Mr.Krabs | مستر کربز">
-    <TypeSelector />
-      <div v-for="product in products" :key="product.id">
-        <CardProduct 
-        :id="product.id"
-        :image="product.image" 
-        :title="product.title" 
-        :subtitle="product.subtitle"
-        :category="product.category"
-        />
-      </div>
+  <base-layout pageTitle="Hello">
+    <banner-card></banner-card>
+   <div class="flex">
+    <CardSimple title="Vegtables" subtitle="fresh and flavourfull turkey" image="https://icon-library.com/images/thanksgiving_4-06-512_7911.png"/>
+    <CardSimple title="Meat" subtitle="fresh and flavourfull turkey" image="https://icon-library.com/images/thanksgiving_4-06-512_7911.png"/>
+    <CardSimple title="Turkey" subtitle="fresh and flavourfull turkey" image="https://icon-library.com/images/thanksgiving_4-06-512_7911.png"/>
+    <CardSimple title="Turkey" subtitle="fresh and flavourfull turkey" image="https://icon-library.com/images/thanksgiving_4-06-512_7911.png"/>
+   </div>
   </base-layout>
 </template>
 
 <script>
-import {} from '@ionic/vue';
-import CardProduct from '@/components/CardProduct.vue';
-import TypeSelector from '@/components/TypeSelector.vue'
-export default  {
-  name: 'Tab1',
-  components: { CardProduct, TypeSelector },
+import CardSimple from '@/components/CardSimple.vue';
+import BannerCard from '@/components/BannerCard.vue';
 
-  data(){
-    return {}
-  },
-  computed: {
-    products(){
-      return this.$store.getters.products
-    }
-  }
+export default  {
+  name: 'Tab2',
+  components: { CardSimple, BannerCard },
 }
 </script>
-
-<style>
-
-</style>

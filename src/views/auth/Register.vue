@@ -72,11 +72,12 @@ export default {
           .then((res) => {
             console.log('successfully registered', res)
             router.replace('/')
+            openToast()
           })
           .catch(err => {
             console.log(err.code)
             alert(err.message)
-          }).finally(() => { openToast() })
+          })
         }
         return {
             router,email,password,register

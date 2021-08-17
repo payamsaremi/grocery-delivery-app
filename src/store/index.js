@@ -3,15 +3,17 @@ import { createStore } from 'vuex';
 const store = createStore({
     state(){
       return {
+          items: [],
         products: [
             {
             id:0,
-            category:'pizza',
-            title:'Detroit style pizza with turkey breast', 
+            category:'Salad',
+            title:'Keto-friendly low carb pizza',
+            price:28,
             subtitle:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est, earum.', 
-            image:'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2020/04/03/DV3111_detroit-pizza_s4x3.jpg.rend.hgtvcom.616.462.suffix/1585945683220.jpeg',
+            image:'https://gimmedelicious.com/wp-content/uploads/2019/01/keto-pizza-11.jpg',
             images: [
-                {id:0, url:'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2020/04/03/DV3111_detroit-pizza_s4x3.jpg.rend.hgtvcom.616.462.suffix/1585945683220.jpeg'},
+                {id:0, url:'https://gimmedelicious.com/wp-content/uploads/2019/01/keto-pizza-11.jpg'},
                 {id:1, url:'https://res.cloudinary.com/culturemap-com/image/upload/ar_4:3,c_fill,g_faces:center,w_980/v1558564215/photos/294912_original.jpg'},
                 {id:2, url:'https://www.ocregister.com/wp-content/uploads/2021/01/OCR-L-SteelPan-WBOX-0121-1.jpg'}
             ]
@@ -19,7 +21,8 @@ const store = createStore({
             {
             id:1, 
             category:'pizza',
-            title:'Detroit style pizza with turkey breast', 
+            title:'Detroit style pizza with turkey breast',
+            price:24,
             subtitle:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est, earum.', 
             image:'https://foxeslovelemons.com/wp-content/uploads/2020/10/Detroit-Style-Pizza-Recipe-5-720x720.jpg',
             images: [
@@ -31,7 +34,8 @@ const store = createStore({
             {
             id:2, 
             category:'salad',
-            title:'Detroit style pizza with turkey breast', 
+            title:'vTurkey salad with letuce and cabbage',
+            price:35,
             subtitle:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est, earum.', 
             image:'https://mybizzykitchen.com/wp-content/uploads/2021/03/themoneyshott.jpeg',
             images: [
@@ -51,9 +55,35 @@ const store = createStore({
             return (productId) => {
                 return state.products.filter(product => {return product.id === Number(productId)})
             }
+        },
+        basketItems(state){
+            return state.items
+        },
+        basketItemsCount(state, getters){
+            return getters.basketItems.length
         }
-    }
-});
+    },
+    mutations: {
+        initialiseStore(state){
+            if (localStorage.getItem('basket')){
+
+                // going over localStorage.basket and adding items to state.items everytime app component is created
+                const basketItems = JSON.parse(localStorage.getItem('basket'))
+                basketItems.forEach(item => state.items.push(item))
+            }
+        },
+        addToBasket(state,id){
+            const product = state.products.filter( product => product.id === Number(id))
+            state.items.push(product)
+            localStorage.setItem('basket',JSON.stringify(state.items))
+        },
+        removeItem(state,id){
+            state.items = state.items.filter( item => id !== item[0].id)
+            localStorage.setItem('basket',JSON.stringify(state.items))
+        }
+      }
+    });
+
 
 
 

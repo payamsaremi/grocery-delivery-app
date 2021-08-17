@@ -19,7 +19,7 @@
 
       </div>
       <div class="col-start-1 row-start-3 space-y-3 px-4">
-        <ion-button expand="block" class="btn btn--primary">Add to card</ion-button>
+        <ion-button @click="addToBasket" expand="block" class="btn btn--primary">Add to Basket</ion-button>
       </div>
       <div class="col-start-1 row-start-1 flex sm:col-start-2 sm:row-span-3">
         <div class="w-full grid grid-cols-2 grid-rows-2 gap-2">
@@ -37,6 +37,7 @@
 <script>
 import { IonButton } from '@ionic/vue';
 import PhotoSlider from '@/components/PhotoSlider.vue';
+import { useRouter } from 'vue-router'
 export default  {
   name: 'Detail',
   components: { IonButton, PhotoSlider },
@@ -46,9 +47,19 @@ export default  {
       id: this.$route.params.id
     }
   },
+  setup(){
+    const router = useRouter()
+    return {router}
+  },
   computed: {
     product(){
       return this.$store.getters.product(this.id)
+    }
+  },
+  methods: {
+    addToBasket(){
+      this.$store.commit('addToBasket', this.id)
+      this.router.replace({ name: 'basket'})
     }
   }
 }

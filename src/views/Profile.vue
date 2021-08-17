@@ -3,12 +3,16 @@
         <hero v-if="isLoggedIn" :userEmail="userEmail">
             <ion-button @click="signOut">sign out</ion-button>
         </hero>
-        <div v-else>
-          <hero>
-          <ion-button :router-link="{ name:'register' }" > Register </ion-button>
-          <ion-button :router-link="{ name:'signIn' }"> Login </ion-button>
-        </hero>
-        </div>
+          <div v-else>
+            <hero>
+            <ion-button :router-link="{ name:'register' }" > Register </ion-button>
+            <ion-button :router-link="{ name:'signIn' }"> Login </ion-button>
+          </hero>
+          </div>
+          <div class="flex">
+          <StatsCard />
+          </div>
+
   </base-layout>
 </template>
 
@@ -18,9 +22,10 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import Hero from '@/components/Hero.vue';
 import firebase from 'firebase'
+import StatsCard from '../components/StatsCard.vue';
 export default  {
   name: 'Tab2',
-  components: { Hero, IonButton },
+  components: { Hero, IonButton, StatsCard },
   data(){
     return {
       amount: 0

@@ -1,46 +1,51 @@
 <template>
-  <base-layout pageTitle="تماس">
-    <div class="container">
-        <ion-text color="dark">
-          <h1>تماس برای ثبت سفارش</h1>
-        </ion-text>
-        <ion-button @click="callNumber" class="btn" expand="block" fill="solid" size="large">
-          <ion-icon slot="start" :icon="call" />
-          ۰۹۱۰۶۱۵۰۶۳۴
-          </ion-button>
-      </div>
+  <base-layout>
+  <input type="text" v-model="user.name">
+  <input type="text" v-model="user.lastName">
+  <input type="email" v-model="user.email">
+  <input type="text" v-model="user.phoneNumber">
+
+  <button class="bg-green-200 p-4 m-1"  @click.prevent="addUser()">Add User</button>
+  
+  <div v-if="!users.length">Loading users....</div>
+  <div v-for="item in users" :key="item.id">
+    {{item.name}} | {{item.lastName}} | {{item.email}} | {{item.phoneNumber}}
+  </div>
+
   </base-layout>
 </template>
 
-
 <script>
-import { IonButton, IonIcon, IonText} from '@ionic/vue';
-import { call } from 'ionicons/icons';
-export default  {
-  name: 'Tab3',
-  components: { IonButton, IonIcon, IonText },
-
-  setup(){
-    return{
-      call
+import BaseLayout from '../components/base/BaseLayout.vue'
+import { createUser, useLoadUsers, getUser } from '../firestore.js'
+export default {
+  components: { BaseLayout },
+  data(){
+    return {
+      user: {
+        name:'',
+        lastName: '',
+        email:'',
+        phoneNumber:''
+      }
     }
   },
-  methods: {
-    callNumber(){
-      window.open('tel:09106150634')
+  setup(){
+    const users = useLoadUsers()
+    return { users }
+  },
+  methods:{
+    addUser(){
+      createUser(this.user)
+      this.user = ''
+    },
+    getUserById(id){
+      return getUser(id)
     }
   }
 }
 </script>
 
-<style scoped>
-.container {
-  text-align: center;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 1rem;
-}
+<style>
+
 </style>
