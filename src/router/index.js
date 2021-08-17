@@ -1,40 +1,40 @@
 import { createRouter, createWebHistory} from '@ionic/vue-router';
 import Tabs from '../views/Tabs.vue'
-import { auth } from '../firestore'
-import { alertController } from '@ionic/vue';
+// import { auth } from '../firestore'
+// import { alertController } from '@ionic/vue';
 
 
-const guard = (to, from, next) => {
-  try {
-    if (!auth.currentUser){
-      // I know this is too much
-      auth.onAuthStateChanged(function(user) {
-        if (user) {
-          next();
-        } else {
-          presentAlert()
-          next({ name: 'signIn' , replace: true})
-        }
-      })
-    } else {
-      next();
-    } 
-  } catch (error) {
-   next("/")
-  }
- }
+// const guard = (to, from, next) => {
+//   try {
+//     if (!auth.currentUser){
+//       // I know this is too much
+//       auth.onAuthStateChanged(function(user) {
+//         if (user) {
+//           next();
+//         } else {
+//           presentAlert()
+//           next({ name: 'signIn' , replace: true})
+//         }
+//       })
+//     } else {
+//       next();
+//     } 
+//   } catch (error) {
+//    next("/")
+//   }
+//  }
 
- async function presentAlert() {
-  const alert = await alertController
-    .create({
-      cssClass: 'my-custom-class',
-      header: 'Access Denied',
-      subHeader: 'Please Login',
-      message: 'Please Login.',
-      buttons: ['OK'],
-    });
-  await alert.present();
-}
+//  async function presentAlert() {
+//   const alert = await alertController
+//     .create({
+//       cssClass: 'my-custom-class',
+//       header: 'Access Denied',
+//       subHeader: 'Please Login',
+//       message: 'Please Login.',
+//       buttons: ['OK'],
+//     });
+//   await alert.present();
+// }
 
 const routes = [
   {
@@ -67,7 +67,7 @@ const routes = [
         path: 'tab2',
         name: 'meals',
         component: () => import('@/views/Tab2.vue'),
-        beforeEnter: guard
+        // beforeEnter: guard
       },
       {
         path: 'tab3',

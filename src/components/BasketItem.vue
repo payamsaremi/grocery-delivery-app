@@ -8,7 +8,6 @@
       <div class="absolute bottom-0 right-0 ">
         <ion-button @click="removeItem" color="light" class="">remove</ion-button>
       </div>
-      
     </div>
   </article>
 </template>

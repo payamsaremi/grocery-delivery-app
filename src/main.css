@@ -2,48 +2,15 @@
     font-family: 'Vazir', sans-serif;
 }
 
-
-/* ion-title.ios.title-medium {
-    color: rgb(24, 24, 24);
-    font-size: 25px;
-  } */
-
-
 ion-button {
 	z-index: 100;
 }
 
 ion-title {
   position: absolute;
-  font-weight: 400;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   text-align: center;
-  color: var(--ion-color-dark)
 }
-
-.center-of-page {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  background-color: aqua;
-}
-
-
-/* ion-toolbar {
-  --background: #fffef5;
-}
-
-ion-tab-bar {
-  --background: #fffef5;
-}
-
-ion-content {
-  --background: #fffef5;
-  --color: #E16847;
-} */
