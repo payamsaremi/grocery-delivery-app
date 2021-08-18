@@ -17,7 +17,7 @@
 
 <script>
 import BaseLayout from '../components/base/BaseLayout.vue'
-import { createUser, useLoadUsers, getUser } from '../firestore.js'
+import { createUser, useLoadUsers, getUser } from '../firebase.js'
 export default {
   components: { BaseLayout },
   data(){

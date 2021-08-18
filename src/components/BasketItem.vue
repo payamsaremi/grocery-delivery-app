@@ -1,12 +1,13 @@
 <template>
-<article class="p-4 flex space-x-4 border border-gray-800 shadow-lg rounded-lg">
-    <img :src="image" alt="" class="flex-none w-18 h-18 rounded-lg object-cover" width="144" height="144" />
+<article class="p-4 flex space-x-4 border border-gray-400 shadow-lg rounded-lg">
+    <img :src="image" alt="" class="flex-none fit__image" />
     <div class="min-w-0 relative flex-auto sm:pr-20 lg:pr-0 xl:pr-20">
       <h2 class="text-lg font-semibold text-black mb-0.5">
        {{title}}
       </h2>
+
       <div class="absolute bottom-0 right-0 ">
-        <ion-button @click="removeItem" color="light" class="">remove</ion-button>
+        <ion-button @click="removeItem" color="light" size="small" class="">remove</ion-button>
       </div>
     </div>
   </article>
@@ -20,12 +21,17 @@ export default {
     methods: {
       removeItem(){
         this.$store.commit('removeItem', this.id)
-    }
+      }
     }
 
 }
 </script>
 
-<style>
-
+<style scoped>
+.fit__image {
+  width: 100px;
+  height: 100px;
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
 </style>

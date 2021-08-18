@@ -59,7 +59,7 @@ const routes = [
         component: () => import('@/views/Tab1.vue'),
       },
       {
-        path: 'tab1/:id',
+        path: 'tab2/:id',
         name: 'detail',
         component: () => import('@/views/product/Detail.vue'),
       },

@@ -1,12 +1,8 @@
 <template>
     <ion-slides mode="ios" pager="true" :options="slideOpts">
-    
           <ion-slide v-for="image in images" :key="image.id">
-          
               <img :src="image.url" alt="" class="fit__image" />
-    
           </ion-slide>
-
   </ion-slides>
 </template>
 

@@ -2,6 +2,7 @@
   <base-layout pageTitle="Basket">
   <div class="text-center flex h-screen" v-if="!BasketItems.length">
     <div class="m-auto">
+      <p class="text-7xl">0</p>
       <p class="text-xl my-2">No items in your basket yet...</p>
       <ion-button color="tertiary" @click="continueShopping">start shopping</ion-button>
     </div>
@@ -15,9 +16,10 @@
             <BasketItem :image="item.image" :title="item.title" :id="item.id"/>
           </div>
       </div>
-  
-      <ion-button color="tertiary" @click="continueShopping">continue shopping</ion-button>
-      <ion-button color="primary">checkout</ion-button>
+      <div class="mb-20">
+      <ion-button color="tertiary" expand="full" @click="continueShopping">continue shopping</ion-button>
+      <ion-button color="primary" expand="full">checkout</ion-button>
+      </div>
     </div>
   </base-layout>
 </template>
@@ -49,6 +51,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

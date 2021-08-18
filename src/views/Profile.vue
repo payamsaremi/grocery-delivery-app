@@ -5,8 +5,12 @@
         </hero>
           <div v-else>
             <hero>
-            <ion-button :router-link="{ name:'register' }" > Register </ion-button>
-            <ion-button :router-link="{ name:'signIn' }"> Login </ion-button>
+            <router-link :to="{ name:'register' }" replace>
+              <ion-button > Register </ion-button>
+            </router-link>
+            <router-link :to="{ name:'signIn' }" replace>
+              <ion-button > Login </ion-button>
+            </router-link>
           </hero>
           </div>
           <div class="flex">
@@ -17,11 +21,11 @@
 </template>
 
 <script>
+import { auth } from '../firebase.js'
 import { IonButton } from '@ionic/vue';
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import Hero from '@/components/Hero.vue';
-import firebase from 'firebase'
 import StatsCard from '../components/StatsCard.vue';
 export default  {
   name: 'Tab2',
@@ -36,7 +40,7 @@ export default  {
     const router = useRouter()
     const userEmail = ref()
 
-    firebase.auth().onAuthStateChanged(function(user) {
+    auth.onAuthStateChanged(function(user) {
       if (user) {
         userEmail.value = user.email // het user's email
         console.log(userEmail.value)
@@ -46,7 +50,7 @@ export default  {
       }
     })
     const signOut = () => {
-      firebase.auth().signOut()
+      auth.signOut()
       router.replace('/')
     }
     return {isLoggedIn, signOut, router, userEmail}

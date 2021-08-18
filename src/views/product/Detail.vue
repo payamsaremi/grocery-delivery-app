@@ -2,11 +2,8 @@
   <base-layout pageTitle="product" pageDefaultBackLink="/tabs/tab1">
   <h1 v-if="!product.length">Coud not find a product here.</h1>
 
-
    <div v-for="item in product" :key="item">
-  
       <PhotoSlider :images="item.images"/>
-
       <div class="px-4 pb-16">
         
            <div class="pt-4">
@@ -15,8 +12,8 @@
               <p class="mt-2 text-gray-700">{{ item.subtitle }}</p>
            </div>
       </div>
-      <div class="space-y-3 px-4">
-        <ion-button @click="addToBasket" expand="block" class="btn btn--primary">Add to Basket</ion-button>
+      <div class="mb-20 space-y-3 px-4">
+        <ion-button @click="addToBasket" expand="block" >Add to Basket</ion-button>
       </div>
    </div>
  

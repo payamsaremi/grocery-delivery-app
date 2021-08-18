@@ -14,14 +14,14 @@
         <p class="color-red" v-if="errMsg">{{errMsg}}</p>
         <ion-button class="mt-6 m-2" expand="block" @click="register"> Submit </ion-button>
     </div>
-    <p class="text-center">Need a new account? <router-link :to="{ name:'register' }"> Register </router-link></p>
+    <p class="text-center">Need a new account? <router-link :to="{ name:'register' }" replace> Register </router-link></p>
 </base-layout>
 </template>
 
 
 <script >
 import { ref } from 'vue'
-import firebase from 'firebase'
+import { auth } from '@/firebase.js'
 import { useRouter } from 'vue-router' // import route
 import { IonItem, IonLabel, IonInput, toastController, IonButton } from '@ionic/vue';
 export default {
@@ -66,10 +66,10 @@ export default {
 
 
         const register = () => {
-        firebase.auth()
-        .signInWithEmailAndPassword(email.value, password.value)
+        auth.signInWithEmailAndPassword(email.value, password.value)
         .then (res => {
             console.log('successfully Signed in!', res)
+            openToast()
             router.replace('/')
         })
         .catch(err => {
@@ -88,7 +88,7 @@ export default {
                     errMsg.value = 'Email or password was incorrect'
                     break
             }
-        }).finally(() => { openToast() })
+        })
         }
         return {
             router,email,password,errMsg,register,

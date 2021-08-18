@@ -14,15 +14,14 @@
         <p class="color-red" v-if="errMsg">{{errMsg}}</p>
         <ion-button class="mt-6 m-2" expand="block" @click="register"> Submit </ion-button>
     </div>
-
-    <p class="text-center">Alredy have an account?  <router-link :to="{ name:'signIn' }"> Login </router-link></p>
+    <p class="text-center">Alredy have an account?  <router-link :to="{ name:'signIn' }" replace> Login </router-link></p>
 </base-layout>
 </template>
 
 
 <script >
 import { ref } from 'vue'
-import firebase from 'firebase'
+import { auth } from '@/firebase.js'
 import { useRouter } from 'vue-router' // import route
 import { IonItem, IonLabel, IonInput, toastController,IonButton } from '@ionic/vue';
 
@@ -67,8 +66,7 @@ export default {
 
 
         const register = () => {
-          firebase.auth()
-          .createUserWithEmailAndPassword(email.value, password.value)
+          auth.createUserWithEmailAndPassword(email.value, password.value)
           .then((res) => {
             console.log('successfully registered', res)
             router.replace('/')
