@@ -2,6 +2,10 @@
 http://ionicframework.com/docs/theming/ */
 
 /** Ionic CSS Variables **/
+
+ion-app.platform-ios12 ion-content { 
+  pointer-events: auto; /*fix scroll lock on ios12.2*/ }
+
 :root {
   /** primary **/
   --ion-color-primary: #eb445a;

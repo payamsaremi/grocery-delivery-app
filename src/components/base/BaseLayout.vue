@@ -3,22 +3,24 @@
     <ion-header>
       <ion-toolbar>
           <ion-buttons slot="start">
-                <ion-back-button text="بازگشت" :default-href="pageDefaultBackLink"></ion-back-button>
+                <ion-back-button type="submit" text="back" :defaultHref="pageDefaultBackLink"></ion-back-button>
           </ion-buttons>
 
           <ion-buttons slot="end">
            <ion-button :router-link="{ name: 'basket'}">
-              <ion-icon slot="icon-only" color="dark" :icon="bag"></ion-icon>
-              <ion-badge color="primary" class="badge">{{basketItemsCount}}</ion-badge>
+             <!-- this does nothing -->
+              <ion-icon slot="icon-only" class="basket__icon" color="dark"></ion-icon>
+              <img class="icon" :src="bagIcon" alt="">
+              <div class="badge">{{basketItemsCount}}</div>
             </ion-button>
           </ion-buttons>
-        <ion-title size="small" slot="end">{{ pageTitle }}</ion-title>
+        <ion-title slot="end">{{ pageTitle }}</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
       <ion-header collapse="condense">
         <ion-toolbar>
-          <ion-title size="medium">{{ pageTitle }}</ion-title>
+          <ion-title >{{ pageTitle }}</ion-title>
         </ion-toolbar>
       </ion-header>
 
@@ -39,12 +41,16 @@ import {
         IonButtons,
         IonBackButton,
         IonIcon,
-        IonBadge,
         } from '@ionic/vue';
 import { bag } from 'ionicons/icons';
 export default  {
   props: ['pageTitle','backButton','pageDefaultBackLink'],
   name: 'Tab1',
+  data(){
+    return {
+      bagIcon: require('@/assets/icons/cart.svg')
+    }
+  },
   components: { 
               IonHeader, 
               IonToolbar, 
@@ -55,7 +61,6 @@ export default  {
               IonButtons,
               IonBackButton,
               IonIcon,
-              IonBadge,
               },
   setup() {
     return {
@@ -75,13 +80,16 @@ ion-toolbar{
     padding-right: 5px;
 }
 .badge {
+  display: flex;
+  align-items: center;
   position: absolute;
   font-weight: 800;
-  padding: 3px;
-  padding-right: 4px;
-  padding-left: 4px;
-  right: -7px;
-  top: -2px;
-  border-radius:100px;
+  padding:3px 6px 2px 6px;
+  border-radius: 50px;
+  right: -5px;
+  top: -1px;
+  transform: scale(0.9);
+  color: white;
+  background-color: var(--ion-color-primary);
 }
 </style>

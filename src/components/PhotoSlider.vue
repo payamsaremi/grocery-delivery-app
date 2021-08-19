@@ -1,9 +1,12 @@
 <template>
-    <ion-slides mode="ios" pager="true" :options="slideOpts">
+<div>
+    <ion-slides mode="ios" pager="true" :options="slideOpts" >
           <ion-slide v-for="image in images" :key="image.id">
               <img :src="image.url" alt="" class="fit__image" />
           </ion-slide>
-  </ion-slides>
+    </ion-slides>
+
+</div>
 </template>
 
 
@@ -29,8 +32,8 @@ export default defineComponent({
 
 <style scoped>
 .fit__image {
-  width: 100vw;
-  height: 500px;
+  width: 100%;
+  height: 400px;
   object-fit: cover;
 }
 </style>

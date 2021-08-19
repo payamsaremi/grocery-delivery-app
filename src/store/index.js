@@ -34,7 +34,7 @@ const store = createStore({
             {
             id:2, 
             category:'salad',
-            title:'vTurkey salad with letuce and cabbage',
+            title:'Turkey salad with letuce and cabbage',
             price:35,
             subtitle:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est, earum.', 
             image:'https://mybizzykitchen.com/wp-content/uploads/2021/03/themoneyshott.jpeg',
@@ -61,24 +61,59 @@ const store = createStore({
         },
         basketItemsCount(state, getters){
             return getters.basketItems.length
-        }
+        },
+        cartProducts: (state) => {
+            return state.items.map(({ id, quantity }) => {
+              const product = state.products.find(product => product.id === id)
+              return {
+                id: product.id,
+                image: product.image,
+                title: product.title,
+                price: product.price,
+                quantity
+              }
+            })
+          },
+    },
+    actions: {
+        addToBasket({ state, commit }, id){
+            const product = state.products.filter( product => product.id === Number(id))
+            const cartItem = state.items.find(item => item.id === product[0].id)
+            if(cartItem){
+                console.log('exist',cartItem.id)
+                commit('incrementItemQuantity',cartItem.id )
+            } else {
+                commit('pushProductToCart', product[0].id)
+                localStorage.setItem('basket',JSON.stringify(state.items))
+            }
+        },
     },
     mutations: {
         initialiseStore(state){
             if (localStorage.getItem('basket')){
-
                 // going over localStorage.basket and adding items to state.items everytime app component is created
                 const basketItems = JSON.parse(localStorage.getItem('basket'))
                 basketItems.forEach(item => state.items.push(item))
             }
         },
-        addToBasket(state,id){
-            const product = state.products.filter( product => product.id === Number(id))
-            state.items.push(product)
+        pushProductToCart (state, id ) {
+            state.items.push({
+              id,
+              quantity: 1
+            })
+          },
+        removeItem(state,id){
+            state.items = state.items.filter( item => id !== item.id)
             localStorage.setItem('basket',JSON.stringify(state.items))
         },
-        removeItem(state,id){
-            state.items = state.items.filter( item => id !== item[0].id)
+        incrementItemQuantity(state, id){
+            const cartItem = state.items.find(item => item.id === id)
+            cartItem.quantity++
+            localStorage.setItem('basket',JSON.stringify(state.items))
+        },
+        decrementItemQuantity(state, id){
+            const cartItem = state.items.find(item => item.id === id)
+            cartItem.quantity--
             localStorage.setItem('basket',JSON.stringify(state.items))
         }
       }
