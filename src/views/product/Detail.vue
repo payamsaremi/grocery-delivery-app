@@ -3,7 +3,7 @@
   <h1 v-if="!product.length">Could not find a product here.</h1>
 
 
-      <div @click="addToBasket" class="addButtonIcon z-50 bg-white text-white flex items-center p-2 w-16 h-16 shadow-lg rounded-full">
+      <div @click="addToBasket" class="addIcon z-50 bg-white text-white flex items-center p-2 w-16 h-16 shadow-lg rounded-full">
         <img :src="addToBagIcon" alt="" class="icon p-1 m-auto w-10 h-10">
       </div>
 
@@ -65,10 +65,10 @@ export default  {
 </script>
 
 <style scoped>
-.addButtonIcon {
+.addIcon {
   position: absolute;
   top: 420px;
-  right: 0;
+  right: 5%;
   cursor: pointer;
 }
 .icon {

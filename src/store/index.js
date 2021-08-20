@@ -69,11 +69,16 @@ const store = createStore({
                 id: product.id,
                 image: product.image,
                 title: product.title,
-                price: product.price,
+                price: product.price * quantity,
                 quantity
               }
             })
           },
+        cartTotalPrice: (state, getters) => {
+            return getters.cartProducts.reduce((total, product) => {
+                return total + product.price
+            }, 0)
+        }
     },
     actions: {
         addToBasket({ state, commit }, id){

@@ -7,14 +7,15 @@
       </h2>
           <div class="mb-5"></div>
         <div class="flex mt-auto justify-between space-y-5 items-end ">
-            <div>
-                <!-- <button @click="removeItem" color="light" size="small" class="w-full antialiased rounded-md bg-red-700 text-white px-2 py-1 font-normal text-s leading-tight shadow-md hover:bg-red-700 tracking-wide">remove</button> -->
+            <div class="flex items-center bg-gray-100 shadow-inner rounded-2xl px-2 py-2 ">
+              
+            <p class="text-l font-black text-gray-700">${{ price }}</p>
             </div>
             <div class="flex items-center bg-gray-100 shadow-inner rounded-2xl px-2 ">
                 <img v-if="quantity > 1" :src="removeIcon" @click="decrement()" class="bg-indigo-100 shadow-sm rounded-full w-6 h-6 hover:bg-indigo-200" >
                 <img v-else :src="trashLogo" @click="removeItem()" class="bg-indigo-100 rounded-full shadow-sm w-6 h-6 hover:bg-indigo-200" alt="">
 
-                <p class="m-3 p-auto text-center text-white text-lg font-semibold bg-indigo-400 shadow-sm rounded-full w-6 h-6">{{quantity}}</p>
+                <p class="m-1.5 p-auto text-center text-white text-lg font-semibold bg-indigo-400 shadow-sm rounded-full w-6 h-6">{{quantity}}</p>
                 <img :src="addIcon" @click="increment()" class="bg-indigo-100 rounded-full shadow-sm w-6 h-6 hover:bg-indigo-200" alt="">
             </div>
         </div>
@@ -24,7 +25,7 @@
 
 <script>
 export default {
-    props: ['title','image','id','quantity'],
+    props: ['title','image','id','quantity','price'],
     components:{},
     data(){
         return {
